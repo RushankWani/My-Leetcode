@@ -12,11 +12,7 @@ class Solution:
                 length=length+1
             return length
         counter=getlength(head)
-        if counter%2==0:
-            mid=counter//2
-        else:
-            mid=counter//2
         curr=head
-        for i in range(mid):
+        for i in range(counter//2):
             curr=curr.next
         return curr
