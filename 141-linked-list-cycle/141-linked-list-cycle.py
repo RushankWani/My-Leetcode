@@ -7,11 +7,12 @@
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
         curr=head
-        dict1=dict()
+        dict1=set()
         while curr:
             if curr in dict1:
                 return True
-            dict1[curr]=True    
+            # dict1[curr]=True
+            dict1.add(curr)
             curr=curr.next
             
         
