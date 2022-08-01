@@ -1,29 +1,17 @@
 class Solution:
     def findAndReplacePattern(self, words: List[str], pattern: str) -> List[str]:
-        res=[]
-        dictp=dict()
-        listp=[]
-        count=0
-        for i in pattern:
-            if i in dictp:
-                listp.append(dictp[i])
-            else:
-                dictp[i]=count
-                listp.append(dictp[i])
-                count+=1
-        # print(listp)
+        result = []
         for word in words:
-            dictw=dict()
-            listw=[]
-            count1=0
-            for letter in word:
-                if letter in dictw:
-                    listw.append(dictw[letter])
-                else:
-                    dictw[letter]=count1
-                    listw.append(dictw[letter])
-                    count1+=1
-            # print(listw)
-            if listp==listw:
-                res.append(word)
-        return res
+            if len(set(pattern)) == len(set(word)):
+                tempDict = {}
+                Flag = False
+                for i in range(len(pattern)):
+                    if pattern[i] not in tempDict:
+                        Flag= True
+                        tempDict[pattern[i]] = word[i]
+                    elif pattern[i] in tempDict and tempDict[pattern[i]] != word[i]:
+                        Flag = False
+                        break
+                if Flag== True:
+                    result.append(word)
+        return result
